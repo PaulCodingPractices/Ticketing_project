@@ -28,6 +28,14 @@ public class UserService {
     @Autowired
     private TicketMapper ticketMapper;
 
+
+    @Autowired
+    public UserService(UserRepository userRepository, UserMapper userMapper, TicketMapper ticketMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
+        this.ticketMapper = ticketMapper;
+    }
+
     public List<UserDTO> getAllUsers() {
         List<User> products = userRepository.findAll();
         return userMapper.toDtoList(products);
